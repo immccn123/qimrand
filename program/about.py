@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './about.ui'
+# Form implementation generated from reading ui file '.\about.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -14,33 +14,45 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(396, 329)
+        Dialog.resize(417, 348)
         self.button = QtWidgets.QDialogButtonBox(Dialog)
-        self.button.setGeometry(QtCore.QRect(290, 20, 81, 241))
+        self.button.setGeometry(QtCore.QRect(320, 260, 81, 61))
         font = QtGui.QFont()
         font.setFamily("Microsoft YaHei UI")
         self.button.setFont(font)
         self.button.setOrientation(QtCore.Qt.Vertical)
         self.button.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.button.setObjectName("button")
-        self.commandLinkButton = QtWidgets.QCommandLinkButton(Dialog)
-        self.commandLinkButton.setGeometry(QtCore.QRect(10, 280, 381, 41))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        self.commandLinkButton.setFont(font)
-        self.commandLinkButton.setObjectName("commandLinkButton")
         self.textBrowser = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser.setGeometry(QtCore.QRect(10, 40, 256, 192))
+        self.textBrowser.setGeometry(QtCore.QRect(10, 10, 371, 91))
         font = QtGui.QFont()
         font.setFamily("Microsoft YaHei UI")
         self.textBrowser.setFont(font)
         self.textBrowser.setObjectName("textBrowser")
-        self.commandLinkButton_2 = QtWidgets.QCommandLinkButton(Dialog)
-        self.commandLinkButton_2.setGeometry(QtCore.QRect(10, 240, 381, 41))
+        self.textBrowser_2 = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser_2.setGeometry(QtCore.QRect(10, 110, 371, 131))
         font = QtGui.QFont()
-        font.setFamily("Segoe UI")
+        font.setFamily("Microsoft YaHei UI Light")
+        self.textBrowser_2.setFont(font)
+        self.textBrowser_2.setObjectName("textBrowser_2")
+        self.widget = QtWidgets.QWidget(Dialog)
+        self.widget.setGeometry(QtCore.QRect(10, 240, 291, 90))
+        self.widget.setObjectName("widget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.commandLinkButton_2 = QtWidgets.QCommandLinkButton(self.widget)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
         self.commandLinkButton_2.setFont(font)
         self.commandLinkButton_2.setObjectName("commandLinkButton_2")
+        self.verticalLayout.addWidget(self.commandLinkButton_2)
+        self.commandLinkButton = QtWidgets.QCommandLinkButton(self.widget)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei UI")
+        self.commandLinkButton.setFont(font)
+        self.commandLinkButton.setObjectName("commandLinkButton")
+        self.verticalLayout.addWidget(self.commandLinkButton)
 
         self.retranslateUi(Dialog)
         self.button.accepted.connect(Dialog.accept)
@@ -50,11 +62,20 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.commandLinkButton.setText(_translate("Dialog", "我的github主页"))
         self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><title>Hello, world!</title><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Microsoft YaHei UI\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600; vertical-align:super;\">软件作者：immccn123</span></h1>\n"
-"<h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:56; vertical-align:super;\">qimrand：一个基于qt的抽学号小工具</span></h1></body></html>"))
+"<h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:56; vertical-align:super;\">qimrand：一个基于PyQt5的抽学号小工具</span></h1></body></html>"))
+        self.textBrowser_2.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Microsoft YaHei UI Light\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">qimrand 1.0.1</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">移除了    版本信息菜单</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">修复了    输入数据过大导致的错误</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">修复了    release中打开程序有黑框的问题</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">优化了    关于界面的UI</span></p></body></html>"))
         self.commandLinkButton_2.setText(_translate("Dialog", "软件github地址"))
+        self.commandLinkButton.setText(_translate("Dialog", "我的github主页"))

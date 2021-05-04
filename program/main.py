@@ -1,33 +1,38 @@
 import random
 import sys
+import traceback
 import webbrowser
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QAction, QApplication, QCommandLinkButton,
-                             QDialog, QMainWindow, QMenu, QMenuBar,
-                             QMessageBox, QPushButton, QTextBrowser)
+                             QDialog, QLabel, QMainWindow, QMenu, QMenuBar,
+                             QMessageBox, QPlainTextEdit, QPushButton,
+                             QTextBrowser)
 
 from about import Ui_Dialog
+from err import Ui_Errorbox
 from window import Ui_MainWindow
 
 
-def show():
-    msgbox = QMessageBox()
-    # msgbox.setIcon(QMessageBox.warning)
-    msgbox.setText("键入的值非法。")
-    msgbox.setWindowTitle("出错拉")
-    msgbox.setStandardButtons(QMessageBox.Ok)
-    rv = msgbox.exec()
-    if rv == QMessageBox.Ok:
-        return
+def show(error, msg):
+    w = Errorbox(msg = error,reason = msg)
+    w.exec_()
         
+class Errorbox(QDialog, Ui_Errorbox):
+    def __init__(self, parent=None, msg="Error msg", reason=""):
+        super(Errorbox, self).__init__(parent)
+        self.setupUi(self)
+        self.setWindowTitle("出错了！")
+        self.err_reason.setText(reason)
+        self.plainTextEdit.setPlainText(msg)
+
 
 class About(QDialog,Ui_Dialog):
     def __init__(self, parent=None):
         super(About, self).__init__(parent)
-        self.setWindowTitle("关于")
         self.setupUi(self)
+        self.setWindowTitle("关于")
         self.commandLinkButton.clicked.connect(self.ps)
         self.commandLinkButton_2.clicked.connect(self.gh)
     def ps(self):
@@ -49,7 +54,12 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         try:
             self.screen.display(random.randint(1,int(self.input.text())))
         except ValueError:
-            show()
+            show(traceback.format_exc(), "输入数据非法")
+        except OverflowError:
+            show(traceback.format_exc(), "输入数据过大")
+        except Exception:
+            show(traceback.format_exc(), "未知错误")
+
 
 
 if __name__ == '__main__':
