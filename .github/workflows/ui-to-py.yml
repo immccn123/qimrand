@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: 添加Online Update UI
+name: Release CI
 
 # Controls when the action will run. 
 on:
@@ -32,4 +32,8 @@ jobs:
           pyuic5.exe -o ./about.py ./about.ui
           pyuic5.exe -o ./err.py ./errbox.ui
           pyuic5.exe -o ./window.py ./rand.ui
+      - name: Build_exe
+        run: |
+          pip install pyinstaller
+          cd ./program
       
