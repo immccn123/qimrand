@@ -27,8 +27,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Ui_change
         run: |
+          pip install pyqt5-tools
           cd ./program
-          pyuic.exe -o ./about.py ./about.ui
-          pyuic.exe -o ./err.py ./errbox.ui
-          pyuic.exe -o ./window.py ./rand.ui
+          pyuic5.exe -o ./about.py ./about.ui
+          pyuic5.exe -o ./err.py ./errbox.ui
+          pyuic5.exe -o ./window.py ./rand.ui
       
