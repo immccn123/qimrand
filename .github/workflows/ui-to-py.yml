@@ -40,8 +40,6 @@ jobs:
           pip install pyinstaller
           cd ./program
           pyinstaller -w ./main.py -o qimrand
-      
-      
     - name : Upload artifact
       uses: actions/upload-artifact@v2
       with:
