@@ -35,11 +35,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a set of commands using the runners shell
+      - name: Install Pkgs
+        run: |
+          pip install PyQt5
       - name: Build_exe
         run: |
           pip install pyinstaller
           cd ./program
-          pyinstaller -w ./main.py -o qimrand
+          pyinstaller.exe -w -n qimrand ./main.py 
     - name : Upload artifact
       uses: actions/upload-artifact@v2
       with:
