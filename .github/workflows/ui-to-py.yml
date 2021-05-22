@@ -7,8 +7,12 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - 'README.md'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,18 +26,26 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Get current time
+        uses: 1466587594/current-time@v1
+        id: current-time
+        with:
+          format: YYYYMMDD_HHmmss
+          utcOffset: "+08:00"
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       # Runs a set of commands using the runners shell
-      - name: Ui_change
-        run: |
-          pip install pyqt5-tools
-          cd ./program
-          pyuic5.exe -o ./about.py ./about.ui
-          pyuic5.exe -o ./err.py ./errbox.ui
-          pyuic5.exe -o ./window.py ./rand.ui
       - name: Build_exe
         run: |
           pip install pyinstaller
           cd ./program
+          pyinstaller -w ./main.py -o qimrand
+      
+      
+    - name : Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: qimrand_build${{ steps.current-time.outputs.formattedTime }}
+        path: |
+          Bin/x64/dist/*
       
