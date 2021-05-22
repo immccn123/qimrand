@@ -43,7 +43,7 @@
      <x>30</x>
      <y>60</y>
      <width>341</width>
-     <height>191</height>
+     <height>151</height>
     </rect>
    </property>
    <property name="font">
@@ -83,15 +83,15 @@
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="text">
-    <string>出错了!</string>
+    <string>Error!</string>
    </property>
   </widget>
   <widget class="QLabel" name="err_reason">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>10</y>
-     <width>171</width>
+     <x>33</x>
+     <y>210</y>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
