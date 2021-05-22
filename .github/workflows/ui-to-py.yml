@@ -43,10 +43,10 @@ jobs:
           pip install pyinstaller
           cd ./program
           pyinstaller.exe -w -n qimrand ./main.py 
-    - name : Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: qimrand_build${{ steps.current-time.outputs.formattedTime }}
-        path: |
-          Bin/x64/dist/*
+      - name : Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: qimrand_build${{ steps.current-time.outputs.formattedTime }}
+          path: |
+            ./program/dist/*
       
