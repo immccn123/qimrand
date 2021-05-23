@@ -27,6 +27,7 @@ class Errorbox(QDialog, Ui_Errorbox):
         self.err_reason.setText(reason)
         self.plainTextEdit.setPlainText(msg)
 
+# class MoreBox()
 
 class About(QDialog,Ui_Dialog):
     def __init__(self, parent=None):

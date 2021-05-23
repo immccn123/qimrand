@@ -89,6 +89,19 @@
      </item>
     </layout>
    </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>280</y>
+      <width>141</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>...</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menus">
    <property name="geometry">
@@ -105,7 +118,14 @@
     </property>
     <addaction name="about"/>
    </widget>
+   <widget class="QMenu" name="tools">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="more"/>
+   </widget>
    <addaction name="help"/>
+   <addaction name="tools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="about">
@@ -116,6 +136,11 @@
   <action name="version">
    <property name="text">
     <string>版本信息</string>
+   </property>
+  </action>
+  <action name="more">
+   <property name="text">
+    <string>批量生成</string>
    </property>
   </action>
  </widget>
