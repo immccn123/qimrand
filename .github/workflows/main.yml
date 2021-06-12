@@ -37,7 +37,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Pkgs
         run: |
-          pip install PyQt5
+          pip install PyQt6
       - name: Build_exe
         run: |
           pip install pyinstaller
@@ -46,7 +46,7 @@ jobs:
       - name : Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: qimrand_build${{ steps.current-time.outputs.formattedTime }}
+          name: qimrand_build_${{ steps.current-time.outputs.formattedTime }}
           path: |
             ./program/dist/*
       

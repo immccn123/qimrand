@@ -3,21 +3,19 @@ import sys
 import traceback
 import webbrowser
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import (QAction, QApplication, QCommandLinkButton,
-                             QDialog, QLabel, QMainWindow, QMenu, QMenuBar,
-                             QMessageBox, QPlainTextEdit, QPushButton,
-                             QTextBrowser)
+import requests
+from PyQt6.QtWidgets import *
 
+import newver
 from about import Ui_Dialog
 from err import Ui_Errorbox
 from window import Ui_MainWindow
 
+version = 'v1.0.2'
 
 def show(error, msg):
     w = Errorbox(msg = error,reason = msg)
-    w.exec_()
+    w.exec()
         
 class Errorbox(QDialog, Ui_Errorbox):
     def __init__(self, parent=None, msg="Error msg", reason=""):
@@ -36,21 +34,30 @@ class About(QDialog,Ui_Dialog):
         self.setWindowTitle("关于")
         self.commandLinkButton.clicked.connect(self.ps)
         self.commandLinkButton_2.clicked.connect(self.gh)
+        self.update.clicked.connect(self.chk_update)
     def ps(self):
         webbrowser.open("https://github.com/immccn123/")
     def gh(self):
         webbrowser.open("https://github.com/immccn123/qimrand/")
+    def chk_update(self):
+        update_status = requests.get("https://api.github.com/repos/immccn123/qimrand/releases/latest")
+        newest_version_status = update_status.json()
+        if version != newest_version_status["tag_name"]:
+            new_version_dig = VerDig()
+            new_version_dig.version.setText("新版本{}可用。下载吗？".format(newest_version_status["tag_name"]))
+            new_version_dig.release_msg.setPlainText(newest_version_status["body"])
+            new_version_dig.exec()
 
-class MyWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(MyWindow, self).__init__(parent)
+        super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("随机学号生成")
         self.con.clicked.connect(self.buttonClicked)
-        self.about.triggered.connect(self.aabout)
-    def aabout(self):
+        self.about.triggered.connect(self.showAboutDig)
+    def showAboutDig(self):
         w = About()
-        w.exec_()
+        w.exec()
     def buttonClicked(self):
         try:
             self.screen.display(random.randint(1,int(self.input.text())))
@@ -61,10 +68,23 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         except Exception:
             show(traceback.format_exc(), "未知错误")
 
+class VerDig(newver.Ui_Dialog,QDialog):
+    def __init__(self, parent=None):
+        super(newver.Ui_Dialog, self).__init__(parent)
+        self.setupUi(self)
+        self.cancel.clicked.connect(self.close)
+        self.download.clicked.connect(self.down)
+    def down(self):
+        webbrowser.open(str(newest_version_status["assets"][0]["browser_download_url"]))
 
 
 if __name__ == '__main__':
+    
     app = QApplication(sys.argv)
-    myWin = MyWindow()
+    myWin = MainWindow()
     myWin.show()
-    sys.exit(app.exec_())
+    
+    a = 0
+    a = app.exec()
+    
+    sys.exit(a)

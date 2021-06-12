@@ -10,6 +10,18 @@
     <height>326</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>318</width>
+    <height>326</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>318</width>
+    <height>326</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -25,8 +37,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
-      <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
@@ -47,8 +57,6 @@
         <widget class="QLabel" name="label">
          <property name="font">
           <font>
-           <family>Microsoft JhengHei UI</family>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -61,8 +69,6 @@
         <widget class="QLineEdit" name="input">
          <property name="font">
           <font>
-           <family>Microsoft JhengHei UI</family>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -77,8 +83,6 @@
       <widget class="QPushButton" name="con">
        <property name="font">
         <font>
-         <family>Microsoft JhengHei UI</family>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -89,19 +93,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>280</y>
-      <width>141</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>...</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menus">
    <property name="geometry">
@@ -109,7 +100,7 @@
      <x>0</x>
      <y>0</y>
      <width>318</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="help">
@@ -118,14 +109,7 @@
     </property>
     <addaction name="about"/>
    </widget>
-   <widget class="QMenu" name="tools">
-    <property name="title">
-     <string>工具</string>
-    </property>
-    <addaction name="more"/>
-   </widget>
    <addaction name="help"/>
-   <addaction name="tools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="about">
