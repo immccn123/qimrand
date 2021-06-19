@@ -11,7 +11,13 @@ from about import Ui_Dialog
 from err import Ui_Errorbox
 from window import Ui_MainWindow
 
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
+
+datas = collect_data_files("PyQt6.QtWidgets")
+hiddenimports = collect_submodules('PyQt6.QtWidgets')
+
 version = 'v1.0.2'
+newest_version_status = {}
 
 def show(error, msg):
     w = Errorbox(msg = error,reason = msg)
@@ -40,6 +46,7 @@ class About(QDialog,Ui_Dialog):
     def gh(self):
         webbrowser.open("https://github.com/immccn123/qimrand/")
     def chk_update(self):
+        global newest_version_status
         update_status = requests.get("https://api.github.com/repos/immccn123/qimrand/releases/latest")
         newest_version_status = update_status.json()
         if version != newest_version_status["tag_name"]:
