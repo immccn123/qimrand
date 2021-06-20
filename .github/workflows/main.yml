@@ -37,7 +37,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Pkgs
         run: |
-          pip install PyQt6
+          pip install PyQt5
       - name: Build_exe
         run: |
           pip install pyinstaller
