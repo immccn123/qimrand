@@ -38,6 +38,7 @@ jobs:
       - name: Install Pkgs
         run: |
           pip install PyQt5
+          pip install requests
       - name: Build_exe
         run: |
           pip install pyinstaller
@@ -49,10 +50,6 @@ jobs:
           name: qimrand_build_${{ steps.current-time.outputs.formattedTime }}
           path: |
             ./program/dist/*
-      - name: Build exe for CI Debug
-        run: |
-          cd ./program
-          pyinstaller.exe -F -n qimrand ./main.py 
       - name : Upload artifact
         uses: actions/upload-artifact@v2
         with:
